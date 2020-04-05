@@ -5,7 +5,8 @@ JC = javac
         $(JC) $(JFLAGS) $*.java
 
 CLASSES = \
-        fibonacciHeap.java \
+        Node.java \
+        FibonacciHeap.java \
         hashtagcounter.java
 
 default: classes

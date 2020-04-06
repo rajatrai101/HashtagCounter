@@ -22,23 +22,21 @@ public class hashtagcounter {
 
 			String nextLine;
 
-			while ((nextLine = bufferedReader.readLine()) != null && !nextLine.equals("stop")) {
+			while ((nextLine = bufferedReader.readLine()) != null) {
+				if (nextLine.equals("stop"))
+					break;
 				String[] strArr = nextLine.split(" ");
-				if (nextLine.indexOf('#') != -1) {
+				if (nextLine.startsWith("#")) {
 					strArr[0] = strArr[0].substring(1);
 					int count = Integer.parseInt(strArr[1]);
-					if (fibHeap.hasString(strArr[0])) {
-						fibHeap.increaseCount(strArr[0], count);
-					} else {
+					if (fibHeap.hasKey(strArr[0]))
+						fibHeap.increaseKey(strArr[0], count);
+					else
 						fibHeap.insert(strArr[0], count);
-					}
+
 				} else {
 					Integer remNum = Integer.parseInt(strArr[0]);
-					try {
-						fibHeap.printNMaxes(remNum);
-					} catch (IOException e) {
-						System.err.printf("No such file exiests: " + e.getMessage());
-					}
+					fibHeap.printNMaxes(remNum);
 				}
 			}
 			bufferedReader.close();
@@ -46,9 +44,8 @@ public class hashtagcounter {
 			// Error handling if filename did not match any files
 			System.err.printf("No such file exiests: " + e.getMessage());
 		} catch (IOException e) {
-			e.printStackTrace();
 			// Error handling if unable to create the output file
-			System.err.printf("Error initializing output file." + e.getMessage());
+			System.err.printf("Error occured with the output file." + e.getMessage());
 		}
 	}
 

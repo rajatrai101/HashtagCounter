@@ -1,1 +1,5 @@
 samplefiles.zip
+*.class
+sampleInput copy.txt
+output+5.txt
+output+3.txt

@@ -4,14 +4,11 @@ JC = javac
 .java.class:
 	$(JC) $(JFLAGS) $*.java
 
-CLASSES = \
-        Node.java \
-        FibonacciHeap.java \
-        hashtagcounter.java
+CLASS = hashtagcounter.java
 
-default: classes
+default: class
 
-classes: $(CLASSES:.java=.class)
+class: $(CLASS:.java=.class)
 
 clean:
 	$(RM) *.class
